@@ -61,17 +61,13 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: false
+          tags: local-weather-app:scan
+          outputs: type=docker
           cache-from: |
             type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/weather-app-ci-cd:cache
           cache-to: |
             type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/weather-app-ci-cd:cache,mode=max
-          tags: ${{ steps.meta.outputs.tags }}
           ssh: 'default'
-
-      - name: Export Docker image for scanning
-        run: |
-          docker buildx imagetools inspect ${{ steps.meta.outputs.tags}}
-          docker tag ${{ steps.meta.outputs.tags }} local-weather-app:scan
       
       -
         name: Scan image with Trivy
