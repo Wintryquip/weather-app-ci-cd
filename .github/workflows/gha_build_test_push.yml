@@ -78,7 +78,12 @@ jobs:
           exit-code: 1
           severity: 'CRITICAL,HIGH'
 
-      -
+      - 
+        name: Set lowercase repo name
+        id: repo
+        run: echo "REPO_LOWER=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+
+      - 
         name: Push image to GHCR (if scan passed)
         if: success()
         uses: docker/build-push-action@v5
@@ -86,10 +91,10 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          platforms: linux/amd,linux/arm64
+          platforms: linux/amd64,linux/arm64
           tags: |
-            ghcr.io/${{ github.repository }}:${{ steps.meta.outputs.version }}
-            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ steps.repo.outputs.REPO_LOWER }}:${{ steps.meta.outputs.version }}
+            ghcr.io/${{ steps.repo.outputs.REPO_LOWER }}:latest
           cache-from: |
             type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/weather-app-ci-cd:cache
           cache-to: |
