@@ -1,0 +1,17 @@
+{
+  "name": "zad1",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mateusz Kędra",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "fetch": "^1.1.0",
+    "node-fetch": "^2.7.0",
+    "path": "^0.12.7"
+  }
+}
