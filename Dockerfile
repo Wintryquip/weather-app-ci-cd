@@ -8,7 +8,7 @@ RUN apk update && apk upgrade --no-cache
 LABEL maintainer="Mateusz Kędra"
 
 RUN apk add --no-cache nodejs npm git openssh-client
-RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+RUN mkdir -p -m 0700 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
 RUN --mount=type=ssh \
     mkdir -p /weather-app-ci-cd && \
     git clone git@github.com:wintryquip/weather-app-ci-cd.git /weather-app-ci-cd
