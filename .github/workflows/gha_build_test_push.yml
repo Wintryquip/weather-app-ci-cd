@@ -66,6 +66,7 @@ jobs:
           cache-to: |
             type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/weather-app-ci-cd:cache,mode=max
           tags: ${{ steps.meta.outputs.tags }}
+          ssh: 'default'
       
       -
         name: Scan image with Trivy
