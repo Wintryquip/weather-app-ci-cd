@@ -64,7 +64,7 @@ jobs:
           cache-from: |
             type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/weather-app-ci-cd:cache
           cache-to: |
-            type:registry,ref=${{ vars.DOCKERHUB_USERNAME }}/weather-app-ci-cd:cache,mode=max
+            type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/weather-app-ci-cd:cache,mode=max
           tags: ${{ steps.meta.outputs.tags }}
       
       -
@@ -91,4 +91,4 @@ jobs:
           cache-from: |
             type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/weather-app-ci-cd:cache
           cache-to: |
-            type:registry,ref=${{ vars.DOCKERHUB_USERNAME }}/weather-app-ci-cd:cache,mode=max
+            type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/weather-app-ci-cd:cache,mode=max
