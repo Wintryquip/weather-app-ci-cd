@@ -67,12 +67,17 @@ jobs:
             type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/weather-app-ci-cd:cache,mode=max
           tags: ${{ steps.meta.outputs.tags }}
           ssh: 'default'
+
+      - name: Export Docker image for scanning
+        run: |
+          docker buildx imagetools inspect ${{ steps.meta.outputs.tags}}
+          docker tag ${{ steps.meta.outputs.tags }} local-weather-app:scan
       
       -
         name: Scan image with Trivy
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ${{ steps.meta.outputs.tags }}
+          image-ref: local-weather-app:scan
           format: 'table'
           exit-code: 1
           severity: 'CRITICAL,HIGH'
@@ -93,3 +98,4 @@ jobs:
             type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/weather-app-ci-cd:cache
           cache-to: |
             type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/weather-app-ci-cd:cache,mode=max
+          ssh: 'default'
