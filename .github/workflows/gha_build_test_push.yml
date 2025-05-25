@@ -62,6 +62,10 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: false
           load: true
+          cache-from: |
+            type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/weather-app-ci-cd:cache
+          cache-to: |
+            type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/weather-app-ci-cd:cache,mode=max
           tags: ${{ steps.meta.outputs.tags }}
           ssh: 'default'
       
