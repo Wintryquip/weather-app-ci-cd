@@ -61,7 +61,6 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: false
-          load: true
           cache-from: |
             type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/weather-app-ci-cd:cache
           cache-to: |
