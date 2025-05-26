@@ -49,7 +49,7 @@ W workflow wykorzystano krok dla załadowania klucza SSH do agenta SSH w środow
  - Semver umożliwia łatwe śledzenie i korzystanie z wersji produkcyjnych.
  - Wybór Trivy jako skanera wynika z prostoty integracji i szerokiego wsparcia.
 
-**Set up**
+## Set up
 Aby pobrać i uruchomić kontener należy wykonać następujące komendy:
  - docker pull ghcr.io/wintryquip/weather-app-ci-cd:latest
  - docker run -p 3000:3000 -e API_KEY=YOUR_API_KEY  ghcr.io/wintryquip/weather-app-ci-cd:latest
