@@ -11,7 +11,7 @@ Celem zadania było stworzenie pipeline'u w GitHub Actions który:
 ## Szczegóły implementacji
 
 ### SSH Agent
-W workflow wykorzystano krok dla załadowania klucza SSH do agenta SSH w środowisku GHActions ponieważ obraz z zadania nr 1 wymagał dostepu do prywatnych repozytoriów przez dostęp SSH.
+W workflow wykorzystano krok dla załadowania klucza SSH do agenta SSH w środowisku GHActions ponieważ obraz z zadania nr 1 wymagał dostepu do repozytoriów przez dostęp SSH.
 
 ### Budowanie obrazu
 
